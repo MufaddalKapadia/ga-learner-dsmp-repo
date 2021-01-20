@@ -6,5 +6,9 @@
 ### Learnings from the project
 
  This project offers basic working knowledge of Numpy and helps get a strong hold of numpy functions.
+ Array Appending
+ Array Slicing
+ Array Filtering
+ Array Aggregation
 
 
