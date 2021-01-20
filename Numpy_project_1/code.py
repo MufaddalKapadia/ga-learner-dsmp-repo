@@ -20,16 +20,24 @@ print(census.shape)
 
 # --------------
 #Code starts here
-age = np.array(census[:,0])
+#Subsetting the array to include only 'Age' column
+age=census[:,0]
 print(age)
-max_age = np.max(age)
-print(max_age)
-min_age = np.min(age)
-print(min_age)
-age_mean = np.mean(age)
-print(age_mean)
-age_std = np.std(age)
-print(age_std)
+#Finding the max value of age
+max_age=age.max()
+print("Max Age= ",max_age)
+
+#Find the min value of age
+min_age=age.min()
+print("Min Age= ",min_age)
+
+#Find the mean of age
+age_mean=age.mean()
+print("Age Average= ", age_mean)
+
+#Find the standard deviation of age
+age_std=age.std()
+print("Age Standard Deviation= ",age_std)
 
 
 # --------------
@@ -83,10 +91,22 @@ print((avg_working_hours))
 
 # --------------
 #Code starts here
-high =  census[census[:,1]>10]
-low =  census[census[:,1]<=10]
-avg_pay_high = high.mean(axis=0)[7]
-avg_pay_low = low.mean(axis=0)[7]
-print(avg_pay_high>avg_pay_low)
+#Creating an array based on 'education' column
+high=census[census[:,1]>10]
+
+#Finding the average pay
+avg_pay_high=high[:,7].mean()
+
+#Printing the average pay
+print(avg_pay_high)
+
+#Creating an array based on 'education' column
+low=census[census[:,1]<=10]
+
+#Finding the average pay
+avg_pay_low=low[:,7].mean()
+
+#Printing the average pay
+print(avg_pay_low)
 
 
