@@ -1,4 +1,5 @@
 # --------------
+#Task 1 - Message Reading
 ##File path for the file 
 file_path 
 def read_file(path):
@@ -15,19 +16,13 @@ def read_file(path):
     #Returning the first line of the file
     return sentence
 
-
 #Calling the function to read file
 sample_message=read_file(file_path)
 
 #Printing the line of the file
 print(sample_message)
 
-#Code ends here
-
-
-# --------------
-#Code starts here
-
+#Task 2 - Message Fusion
 def fuse_msg(message_a,message_b):
     
     #Integer division of two numbers
@@ -39,6 +34,7 @@ def fuse_msg(message_a,message_b):
 #Calling the function to read file  
 message_1=read_file(file_path_1)
 print(message_1)
+
 #Calling the function to read file
 message_2=read_file(file_path_2)
 
@@ -48,13 +44,7 @@ secret_msg_1=fuse_msg(message_1,message_2)
 #Printing the secret message 
 print(secret_msg_1)
 
-
-
-
-
-
-# --------------
-#Code starts here
+#Task 3 - Message Substitution
 def substitute_msg(message_c):
     
     #If-else to compare the contents of the file
@@ -77,15 +67,10 @@ secret_msg_2=substitute_msg(message_3)
 #Printing the secret message
 print(secret_msg_2)
 
-
-
-# --------------
+#Task 4 - Message Comparision
 # File path for message 4  and message 5
 file_path_4
 file_path_5
-
-#Code starts here
-
 
 def compare_msg(message_d,message_e):
     
@@ -104,7 +89,6 @@ def compare_msg(message_d,message_e):
     #Returning the sentence
     return final_msg
 
-
 #Calling the function to read file
 message_4=read_file(file_path_4)
 
@@ -117,13 +101,7 @@ secret_msg_3=compare_msg(message_4,message_5)
 #Printing the secret message
 print(secret_msg_3)
 
-#Code e
-
-
-
-
-# --------------
-#Code starts here
+#Task 5 - Message Filter
 def extract_msg(message_f):
     
     #Splitting the message into a list
@@ -150,17 +128,11 @@ secret_msg_4=extract_msg(message_6)
 #Printing the secret message
 print(secret_msg_4)
 
-#Code ends here
-
-
-# --------------
 #Secret message parts in the correct order
 message_parts=[secret_msg_3, secret_msg_1, secret_msg_4, secret_msg_2]
 
-
 final_path= user_data_dir + '/secret_message.txt'
 
-#Code starts here
 secret_msg=" ".join(message_parts)
 
 #Function to write inside a file
@@ -180,7 +152,5 @@ write_file(secret_msg, final_path)
 
 #Printing the entire secret message
 print(secret_msg)
-
-#Code ends here
 
 
