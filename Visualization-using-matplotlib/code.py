@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-#Code starts here
 #Reading the file
 data=pd.read_csv(path)
 
@@ -15,9 +14,6 @@ loan_status=data['Loan_Status'].value_counts()
 plt.bar(loan_status.index, loan_status)
 plt.show()
 
-
-# --------------
-#Code starts here
 #Plotting an unstacked bar plot
 property_and_loan=data.groupby(['Property_Area', 'Loan_Status'])
 property_and_loan=property_and_loan.size().unstack()
@@ -33,11 +29,11 @@ plt.ylabel('Loan_Status')
 plt.xticks(rotation=45)
 
 
-# --------------
-#Plotting an unstacked bar plot
+#Plotting a stacked bar plot
 education_and_loan=data.groupby(['Education', 'Loan_Status'])
 education_and_loan=education_and_loan.size().unstack()
-education_and_loan.plot(kind='bar', stacked=False, figsize=(15,10))
+education_and_loan.plot(kind='bar', stacked=True, figsize=(15,10))
+
 
 #Changing the x-axis label
 plt.xlabel('Education Status')
@@ -46,14 +42,7 @@ plt.xlabel('Education Status')
 plt.ylabel('Loan Status')
 
 #Rotating the ticks of X-axis
-plt.xticks(rotation=45)#Code starts here
-
-
-# --------------
-#Code starts here
-
-
-
+plt.xticks(rotation=45)
 
 #Subsetting the dataframe based on 'Education' column
 graduate=data[data['Education']=='Graduate']
@@ -70,15 +59,9 @@ graduate['LoanAmount'].plot(kind='density', label='Graduate')
 #Plotting density plot for 'Graduate'
 not_graduate['LoanAmount'].plot(kind='density',label='Not Graduate')
 
-
-#Code ends here
-
 #For automatic legend display
 plt.legend()
 
-
-# --------------
-#Code starts here
 #Setting up the subplots
 fig, (ax_1, ax_2,ax_3) = plt.subplots(1,3, figsize=(20,8))
 
@@ -104,6 +87,3 @@ ax_3.scatter(data['TotalIncome'],data["LoanAmount"])
 
 #Setting the subplot axis title
 ax_3.set(title='Total Income')
-
-
-
