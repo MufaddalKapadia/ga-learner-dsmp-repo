@@ -24,8 +24,6 @@ print(p_a_b)
 result = (p_a == p_a_b)
 print(result)
 
-# --------------
-# code starts here
 # probability of paid_back_loan is Yes
 prob_lp = df[df['paid.back.loan'] == 'Yes'].shape[0] / df.shape[0]
 print(prob_lp)
@@ -38,21 +36,13 @@ new_df = df[df['paid.back.loan'] == 'Yes']
 
 # Calculate the P(B|A)
 prob_pd_cs = new_df[new_df['credit.policy'] == 'Yes'].shape[0] / new_df.shape[0]
-
 print(prob_pd_cs)
 
 # bayes theorem 
-
 bayes = (prob_pd_cs * prob_lp)/ prob_cs
 
 # print bayes
 print(bayes)
-
-
-
-
-# code ends here
-
 
 # --------------
 # code starts here
