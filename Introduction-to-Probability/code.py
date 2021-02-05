@@ -3,15 +3,12 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# code starts here
 # Load the dataframe
 df = pd.read_csv(path)
 
 # probability of  fico score greater than 700
-
 p_a = df[df['fico'].astype(float) >700].shape[0]/df.shape[0]
 print(p_a)
-
 
 # probability of purpose == debt_consolidation
 p_b = df[df['purpose']== 'debt_consolidation'].shape[0]/df.shape[0]
@@ -26,11 +23,6 @@ print(p_a_b)
 # Check whether the P(A) and P(B) are independent from each other
 result = (p_a == p_a_b)
 print(result)
-
-
-
-# code ends here
-
 
 # --------------
 # code starts here
