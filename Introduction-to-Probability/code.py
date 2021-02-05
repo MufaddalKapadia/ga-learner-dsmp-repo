@@ -44,9 +44,6 @@ bayes = (prob_pd_cs * prob_lp)/ prob_cs
 # print bayes
 print(bayes)
 
-# --------------
-# code starts here
-
 df.purpose.value_counts(normalize=True).plot(kind='bar')
 plt.title("Probability Distribution of Purpose")
 plt.ylabel("Probability")
@@ -62,29 +59,19 @@ plt.title("Probability Distribution of Purpose")
 plt.ylabel("Probability")
 plt.xlabel("Number of Purpose")
 plt.show()
-# code ends here
-
-
-# --------------
-# code starts here
 
 # Calculate median 
 inst_median = df['installment'].median()
 inst_mean = df['installment'].mean()
 
-
 # histogram for installment
 df['installment'].hist(normed = True, bins=50)
 plt.axvline(x=inst_median,color='r')
 plt.axvline(x=inst_mean,color='g')
-
 plt.show()
 
 #histogram for log anual income
 df['log.annual.inc'].hist(normed = True, bins=50)
 plt.show()
-
-
-# code ends here
 
 
