@@ -4,6 +4,10 @@ import scipy.stats as stats
 import math
 import numpy as np
 import warnings
+import matplotlib.pyplot as plt
+from statsmodels.stats.weightstats import ztest
+from statsmodels.stats.weightstats import ztest
+from scipy.stats import chi2_contingency
 
 warnings.filterwarnings('ignore')
 #Sample_Size
@@ -40,9 +44,6 @@ true_mean=data['installment'].mean()
 
 print(("True mean: {}".format(true_mean)))
 
-import matplotlib.pyplot as plt
-import numpy as np
-
 #Different sample sizes to take
 sample_size=np.array([20,50,100])
 
@@ -73,9 +74,6 @@ for i in range(len(sample_size)):
 #Displaying the plot
 plt.show()
 
-#Importing header files
-from statsmodels.stats.weightstats import ztest
-
 # Removing the last character from the values in column
 data['int.rate'] = data['int.rate'].map(lambda x: str(x)[:-1])
 
@@ -88,17 +86,10 @@ z_statistic, p_value = ztest(x1=data[data['purpose']=='small_business']['int.rat
 print(('Z-statistic is :{}'.format(z_statistic)))
 print(('P-value is :{}'.format(p_value)))
 
-#Importing header files
-from statsmodels.stats.weightstats import ztest
-
-#Code starts here
 z_statistic, p_value = ztest(x1=data[data['paid.back.loan']=='No']['installment'], x2=data[data['paid.back.loan']=='Yes']['installment'])
 
 print(('Z-statistic is :{}'.format(z_statistic)))
 print(('P-value is :{}'.format(p_value)))
-
-#Importing header files
-from scipy.stats import chi2_contingency
 
 #Critical value 
 critical_value = stats.chi2.ppf(q = 0.95, # Find the critical value for 95% confidence*
@@ -119,5 +110,3 @@ print(critical_value)
 
 print("Chi Statistic")
 print(chi2)
-
-
