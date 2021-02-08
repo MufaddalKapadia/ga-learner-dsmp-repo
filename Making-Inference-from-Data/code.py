@@ -12,14 +12,12 @@ sample_size=2000
 #Z_Critical Score
 z_critical = stats.norm.ppf(q = 0.95)  
 
-
 # path        [File location variable]
 #Reading file
 data=pd.read_csv(path)
 
 #Sampling the dataframe
 data_sample = data.sample(n=sample_size, random_state=0)
-
 
 #Finding the mean of the sample
 sample_mean = data_sample['installment'].mean()
@@ -41,9 +39,6 @@ print(confidence_interval)
 true_mean=data['installment'].mean()
 
 print(("True mean: {}".format(true_mean)))
-#Code starts here
-
-
 
 # --------------
 import matplotlib.pyplot as plt
