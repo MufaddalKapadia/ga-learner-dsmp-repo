@@ -40,14 +40,12 @@ true_mean=data['installment'].mean()
 
 print(("True mean: {}".format(true_mean)))
 
-# --------------
 import matplotlib.pyplot as plt
 import numpy as np
 
 #Different sample sizes to take
 sample_size=np.array([20,50,100])
 
-#Code starts here
 #Creating different subplots
 fig,axes=plt.subplots(3,1, figsize=(10,20))
 
@@ -66,25 +64,18 @@ for i in range(len(sample_size)):
         #Appending the mean to the list
         m.append(mean)
         
-        
     #Converting the list to series
     mean_series=pd.Series(m)   
 
     #Plotting the histogram for the series
-    axes[i].hist(mean_series, normed=True)
-
-    
+    axes[i].hist(mean_series, normed=True)  
 
 #Displaying the plot
 plt.show()
 
-
-# --------------
 #Importing header files
-
 from statsmodels.stats.weightstats import ztest
 
-#Code starts here
 # Removing the last character from the values in column
 data['int.rate'] = data['int.rate'].map(lambda x: str(x)[:-1])
 
@@ -97,8 +88,6 @@ z_statistic, p_value = ztest(x1=data[data['purpose']=='small_business']['int.rat
 print(('Z-statistic is :{}'.format(z_statistic)))
 print(('P-value is :{}'.format(p_value)))
 
-
-# --------------
 #Importing header files
 from statsmodels.stats.weightstats import ztest
 
@@ -108,8 +97,6 @@ z_statistic, p_value = ztest(x1=data[data['paid.back.loan']=='No']['installment'
 print(('Z-statistic is :{}'.format(z_statistic)))
 print(('P-value is :{}'.format(p_value)))
 
-
-# --------------
 #Importing header files
 from scipy.stats import chi2_contingency
 
@@ -117,23 +104,18 @@ from scipy.stats import chi2_contingency
 critical_value = stats.chi2.ppf(q = 0.95, # Find the critical value for 95% confidence*
                       df = 6)   # Df = number of variable categories(in purpose) - 1
 
-#Code starts here
 # Subsetting the dataframe
 yes=data[data['paid.back.loan']=='Yes']['purpose'].value_counts()
 no=data[data['paid.back.loan']=='No']['purpose'].value_counts()
 
-
 #Concating yes and no into a single dataframe
 observed=pd.concat([yes.transpose(),no.transpose()], 1,keys=['Yes','No'])
-
 print(observed)
 
 chi2, p, dof, ex = chi2_contingency(observed)
 
-
 print("Critical value")
 print(critical_value)
-
 
 print("Chi Statistic")
 print(chi2)
