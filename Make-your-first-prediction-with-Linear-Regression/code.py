@@ -2,7 +2,9 @@
 import pandas as pd
 import numpy as np
 from sklearn.cross_validation import train_test_split
-# code starts here
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
 
 # read the dataset
 df = pd.read_csv(path)
@@ -17,15 +19,7 @@ X = df.drop('list_price',axis=1)
 y = df['list_price']
 
 # spliting the dataset
-X_train,X_test,y_train,y_test=train_test_split(X,y ,test_size=0.3,random_state=6)
-# code ends here
-
-
-
-# --------------
-import matplotlib.pyplot as plt
-
-# code starts here        
+X_train,X_test,y_train,y_test=train_test_split(X,y ,test_size=0.3,random_state=6)       
 
 cols = X_train.columns
 
@@ -38,15 +32,8 @@ for i in range(0,3):
             axes[i,j].scatter(X_train[col],y_train)
             axes[i,j].set_xlabel(col)
             axes[i,j].set_ylabel('list_price')
-        
 
-# code ends here
 plt.show()
-
-
-
-# --------------
-# Code starts here
 
 # corr code
 corr = X_train.corr()
@@ -57,14 +44,6 @@ X_train.drop(['play_star_rating','val_star_rating'],axis = 1 ,inplace=True)
 # drop columns from X_test
 X_test.drop(['play_star_rating','val_star_rating'], axis = 1 ,inplace=True)
 
-# Code ends here
-
-
-# --------------
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-
-# Code starts here
 #Instantiate linear regression model
 regressor=LinearRegression()
 
@@ -86,17 +65,12 @@ r2 = r2_score(y_test, y_pred)
 #print r2
 print(r2)
 
-
-# Code ends here
-
-
-# --------------
-# Code starts here
-
 residual = y_test - y_pred
-plt.hist(residual)
 
-
-# Code ends here
-
-
+# plot the figure for residual
+plt.figure(figsize=(15,8))
+plt.hist(residual, bins=30)
+plt.xlabel("Residual")
+plt.ylabel("Frequency")   
+plt.title("Error Residual plot")
+plt.show()
