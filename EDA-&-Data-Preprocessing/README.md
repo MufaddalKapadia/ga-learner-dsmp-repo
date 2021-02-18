@@ -4,10 +4,12 @@ But is there any particular pattern among high rated apps? Does size or genre of
 
 Let's find out.
 
-Problem Statement
+**Problem Statement:**
+
 Conduct an EDA on the Google Play Store data and try to explore whether given the data, ratings of an can be predicted
 
-About the Dataset
+**About the Dataset:**
+
 The dataset has details of 10841 apps with following 13 features
 
 Feature	Description
