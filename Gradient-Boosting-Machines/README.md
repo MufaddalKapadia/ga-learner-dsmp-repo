@@ -4,13 +4,13 @@ Predictive analytics use churn prediction models that predict customer churn by 
 
 For this project we will be exploring the dataset of a telecom company and try to predict the customer churn
 
-Problem Statement
+**Problem Statement:**
+
 Using the method of Boosting, classify whether or not the customer will churn
 
-Why solve this project ?
 After completing this project, you will have a better understanding of how to build a boosting model. In this project, you will apply the following concepts.
 
-Handling missing values in data
-Applying AdaBoost
-Applying XGBoost
-Interpreting evaluation metrics
+* Handling missing values in data
+* Applying AdaBoost
+* Applying XGBoost
+* Interpreting evaluation metrics
