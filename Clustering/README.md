@@ -8,29 +8,28 @@ In this assessment, you'll be doing exactly that, albeit with the help of K-Mean
 
 You have a dataset consisting of two sheets, with names OfferInformation and Transactions. OfferInformation has 32 rows and 7 columns while Transactions has 324 rows and 3 columns. Below given are snapshots of both:
 
-Feature description is given below:
+**OfferInformation Sheet:**
 
-Feature	Description
-Offer #	Order ID
-Campaign	Month of the campaign
-Varietal	Grape variety
-Minimum Qty(kg)	Minimum quantity ordered in kgs
-Discount(%)	Discount on that order
-Origin	Country where the variety of grape is grown
-Past Peak	If wine flavor has faded
-Transactions Sheet
+Feature | Description
+------- | -----------
+Offer # |	Order ID
+Campaign	| Month of the campaign
+Varietal	| Grape variety
+Minimum Qty(kg)	| Minimum quantity ordered in kgs
+Discount(%)	| Discount on that order
+Origin	| Country where the variety of grape is grown
+Past Peak	| If wine flavor has faded
 
-transaction
+**Transactions Sheet:**
 
-Feature description is given below:
+Feature | Description
+------- | -----------
+Customer Last Name	| Name of the customer purchasing
+Offer #	| Offer ID
 
-Feature	Description
-Customer Last Name	Name of the customer purchasing
-Offer #	Offer ID
-Why solve this project
 Successfully solving this project will help you apply the following skills:
 
-Data Manipulation
-Dimensionality Reduction Technique with PCA
-KMeans clustering
-Interpreting clusters with visualization
+* Data Manipulation
+* Dimensionality Reduction Technique with PCA
+* KMeans clustering
+* Interpreting clusters with visualization
