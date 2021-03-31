@@ -1,16 +1,23 @@
-# --------------
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+import warnings
+warnings.filterwarnings('ignore')
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import precision_score 
+from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from imblearn.over_sampling import SMOTE
 
-# Code starts here
 # Load the data
 df = pd.read_csv(path)
 
 # replace the $ symbol
 columns = ['INCOME','HOME_VAL','BLUEBOOK','OLDCLAIM','CLM_AMT']
+
 for col in columns:
     df[col].replace({'\$': '', ',': ''}, regex=True,inplace=True)
 
@@ -27,11 +34,6 @@ print(count)
 # spliting the dataset
 X_train,X_test,y_train,y_test=train_test_split(X,y ,test_size=0.3,random_state=6)
 
-# Code ends here
-
-
-# --------------
-# Code starts here
 # Convert object type to float on X_train
 X_train[['INCOME','HOME_VAL','BLUEBOOK','OLDCLAIM','CLM_AMT']]=X_train[['INCOME','HOME_VAL','BLUEBOOK','OLDCLAIM','CLM_AMT']].astype(float)
 
@@ -43,28 +45,30 @@ print(pd.DataFrame({'total_missing': X_train.isnull().sum(), 'perc_missing': (X_
 
 # check missing values in X_test
 print(pd.DataFrame({'total_missing': X_train.isnull().sum(), 'perc_missing': (X_train.isnull().sum()/3091)*100}))
-# Code ends here
 
-
-# --------------
-# Code starts here
+# drop missing values
 X_train.dropna(subset=['YOJ','OCCUPATION'],inplace=True)
 X_test.dropna(subset=['YOJ','OCCUPATION'],inplace=True)
-y_train = y_train[X_train.index]
-y_test = y_test[X_test.index]
+y_train=y_train[X_train.index]
+y_test=y_test[X_test.index]
+
+# fill missing values with mean
 X_train['AGE'].fillna((X_train['AGE'].mean()), inplace=True)
+X_test['AGE'].fillna((X_train['AGE'].mean()), inplace=True)
+
 X_train['CAR_AGE'].fillna((X_train['CAR_AGE'].mean()), inplace=True)
+X_test['CAR_AGE'].fillna((X_train['CAR_AGE'].mean()), inplace=True)
+
 X_train['INCOME'].fillna((X_train['INCOME'].mean()), inplace=True)
+X_test['INCOME'].fillna((X_train['INCOME'].mean()), inplace=True)
+
 X_train['HOME_VAL'].fillna((X_train['HOME_VAL'].mean()), inplace=True)
-X_test['AGE'].fillna((X_test['AGE'].mean()), inplace=True)
-X_test['CAR_AGE'].fillna((X_test['CAR_AGE'].mean()), inplace=True)
-X_test['INCOME'].fillna((X_test['INCOME'].mean()), inplace=True)
-X_test['HOME_VAL'].fillna((X_test['HOME_VAL'].mean()), inplace=True)
-# Code ends here
+X_test['HOME_VAL'].fillna((X_train['HOME_VAL'].mean()), inplace=True)
 
+print(X_train.isnull().sum())
+print(X_test.isnull().sum())
 
-# --------------
-from sklearn.preprocessing import LabelEncoder
+# Columns are given
 columns = ["PARENT1","MSTATUS","GENDER","EDUCATION","OCCUPATION","CAR_USE","CAR_TYPE","RED_CAR","REVOKED"]
 
 # Code starts here
@@ -76,32 +80,19 @@ for col in columns:
     # transform label encoder on X_test
     X_test[col]=le.transform(X_test[col].astype(str))
 
-# Code ends here
-
-
-
-# --------------
-from sklearn.metrics import precision_score 
-from sklearn.metrics import accuracy_score
-from sklearn.linear_model import LogisticRegression
-
-
-
-# code starts here 
+# Instantiate logistic regression
 model = LogisticRegression(random_state = 6)
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
+
+# fit the model
+model.fit(X_train,y_train)
+
+# predict the result
+y_pred =model.predict(X_test)
+
+# calculate the f1 score
 score = accuracy_score(y_test, y_pred)
+print(score)
 
-
-# Code ends here
-
-
-# --------------
-from sklearn.preprocessing import StandardScaler
-from imblearn.over_sampling import SMOTE
-
-# code starts here
 # Instantiate SMOTE 
 smote = SMOTE(random_state=9)
 
@@ -117,15 +108,15 @@ X_train = scaler.fit_transform(X_train)
 # Apply transform to the test set.
 X_test = scaler.transform(X_test)
 
-# Code ends here
-
-
-# --------------
-# Code Starts here
+# Instantiate logistic regression
 model = LogisticRegression()
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
-score = accuracy_score(y_pred, y_test)
-# Code ends here
 
+# fit the model
+model.fit(X_train,y_train)
 
+# predict the result
+y_pred =model.predict(X_test)
+
+# calculate the f1 score
+score = accuracy_score(y_test, y_pred)
+print(score)
