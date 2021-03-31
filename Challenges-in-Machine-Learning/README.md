@@ -34,6 +34,7 @@ CLAIM_FLAG	| Target variable (YES/NO)
 This is imbalanced dataset . Here 
 * 0 - Claim was not made 
 * 1 - Claim made
+
 After completing this project, you will have the better understanding of how to build deal with imbalanced dataset. In this project, you will apply the following concepts.
 
 * Train-test split
