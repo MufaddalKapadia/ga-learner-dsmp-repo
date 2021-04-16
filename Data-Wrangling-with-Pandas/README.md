@@ -15,7 +15,7 @@ ApplicantIncome | Income of the applicant
 CoapplicantIncome | Income of the co-applicant
 LoanAmount | Loan amount in thousands
 LoanAmountTerm | Term of the loan in months
-Credit_History | credit history meets guidelines}
+Credit_History | Credit history meets guidelines}
 Property_Area | Urban/Semi-Urban/Rural
 Loan_Status | Loan approved (Y/N)
 
