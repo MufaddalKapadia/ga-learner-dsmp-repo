@@ -12,14 +12,14 @@ AGE	| Age of the customer
 HOMEKIDS	| Number of kids in the home
 YOJ	| Year of joining of the customer (employee/unemployee)
 INCOME	| Annual income of the customer
-PARENT1	| parent is alive or not
+PARENT1	| Parent is alive or not
 HOME_VAL	| Home value of the customer
 MSTATUS	| Marital status
 GENDER	| Male/Female
 EDUCATION	| Degree holds by the customer
 OCCUPATION	| Job title
 TRAVTIME	| Traveling time
-CAR_USE	| purpose of the car (private/commercial)
+CAR_USE	| Purpose of the car (private/commercial)
 BLUEBOOK	| Legal citation system in the United States
 CAR_TYPE	| Type of car(SUV/Pick up)
 RED_CAR	| Colour of the car
