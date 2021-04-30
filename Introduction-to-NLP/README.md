@@ -17,6 +17,7 @@ This dataset comes from the UCI Machine Learning Repository. In total there are 
 * HOSTNAME: hostname where the article was posted
 * TIMESTAMP: approximate timestamp of the article's publication, given in Unix time (seconds since midnight on Jan 1, 1970)
 
+Solving it will reinforce the following concepts of text analytics:
 
 * Preprocess text data with tokenization, stopword removal etc
 * Vectorize data using Bag-of-words and TF-IDF approaches
