@@ -1,9 +1,6 @@
-# --------------
-# import packages
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
 import seaborn as sns
 import re
 from nltk.corpus import stopwords
@@ -13,9 +10,6 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score ,confusion_matrix
-
-
-# Code starts here
 
 # load data
 news = pd.read_csv(path)
@@ -31,11 +25,6 @@ print(dist)
 
 # display data
 print(news.head())
-# Code ends here
-
-
-# --------------
-# Code starts here
 
 # stopwords 
 stop = set(stopwords.words('english'))
@@ -55,13 +44,6 @@ news['TITLE'] = news['TITLE'].apply(lambda x: ' '.join(x))
 # split into training and test sets
 X_train, X_test, Y_train, Y_test = train_test_split(news["TITLE"], news["CATEGORY"], test_size = 0.2,random_state=3)                 
 
-
-# Code ends here
-
-
-# --------------
-# Code starts here
-
 # initialize count vectorizer
 count_vectorizer = CountVectorizer()
 
@@ -75,11 +57,6 @@ X_test_count = count_vectorizer.transform(X_test)
 # fit and transform with tfidf vectorizer
 X_train_tfidf = tfidf_vectorizer.fit_transform(X_train)
 X_test_tfidf = tfidf_vectorizer.transform(X_test)
-# Code ends here
-
-
-# --------------
-# Code starts here
 
 # initialize multinomial naive bayes
 nb_1 = MultinomialNB()
@@ -100,10 +77,6 @@ acc_tfidf_nb =accuracy_score(nb_2.predict(X_test_tfidf), Y_test)
 print(acc_count_nb)
 print(acc_tfidf_nb)
 
-# Code ends here
-
-
-# --------------
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -125,7 +98,3 @@ acc_tfidf_logreg = accuracy_score(logreg_2.predict(X_test_tfidf), Y_test)
 # display accuracies
 print(acc_count_logreg)
 print(acc_tfidf_logreg)
-
-# Code ends here
-
-
